@@ -1,21 +1,20 @@
 <template>
   <div class="add-tag-step-image flex flex-grow flex-col justify-start items-start">
-    <div class="m-8 text-lg font-semibold text-white">Bild von Spotify</div>
-    <div class="flex content-end">
-      <TagEntry class="ml-8 w-32" :img="spotifyImageUrl" @click="changeImage(true)" />
+    <LabeledInput label="Bild von Spotify" class="mt-auto mb-4">
+      <TagEntry class="mx-auto w-32" :img="spotifyImageUrl" @click="changeImage(true)" />
       <span v-if="isSpotify" class="far fa-check-circle transform -translate-x-9" />
-    </div>
-    <div class="mb-2 mx-8 mt-8 text-lg font-semibold text-white">Bild aus dem Internet</div>
-    <div class="flex content-end">
+    </LabeledInput>
+
+    <LabeledInput label="Bild aus dem Internet" class="mb-auto">
       <TagEntry
         v-if="externalImage"
-        class="ml-8 w-32"
+        class="mx-auto w-32"
         :img="externalImage"
         @click="changeImage(false)"
       />
       <span v-if="!isSpotify" class="far fa-check-circle transform -translate-x-9" />
-    </div>
-    <Textfield v-model="externalImage" class="mb-8 mx-8 mt-2 w-full" placeholder="enter URL" />
+      <Textfield v-model="externalImage" class="mx-2" placeholder="enter URL" />
+    </LabeledInput>
   </div>
 </template>
 
@@ -23,13 +22,14 @@
 import { NFCTag } from '@leek/commons';
 import { defineComponent, PropType, ref } from 'vue';
 
+import LabeledInput from '../uiBlocks/LabeledInput.vue';
 import TagEntry from '../uiBlocks/TagEntry.vue';
 import Textfield from '../uiBlocks/Textfield.vue';
 
 export default defineComponent({
   name: 'AddTagStepImage',
 
-  components: { TagEntry, Textfield },
+  components: { TagEntry, Textfield, LabeledInput },
 
   props: {
     nfcTag: {

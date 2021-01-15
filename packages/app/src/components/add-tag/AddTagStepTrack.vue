@@ -35,13 +35,13 @@
         :class="{ 'shadow-xl border-yellow-400': selectedTrack && track.uri === selectedTrack.uri }"
         @click="changeTrack(track)"
       >
-        <TagEntry :img="track.imageUri" class="w-20" />
+        <TagEntry :img="track.imageUri" class="w-20 h-20" />
         <div class="flex flex-col text-white">
           <span
-            class="ml-4 text-lg font-bold whitespace-nowrap overflow-hidden overflow-ellipsis"
+            class="ml-4 text-lg font-bold"
             >{{ track.title }}</span
           >
-          <span class="ml-4 text-base whitespace-nowrap overflow-hidden overflow-ellipsis">{{
+          <span class="ml-4 text-base">{{
             track.artists.join(', ')
           }}</span>
         </div>
